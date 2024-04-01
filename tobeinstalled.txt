@@ -30,6 +30,13 @@ manpages-dev
 plymouth
 plymouth-themes
 psmisc
+qterminal
+qterminal-l10n
+qt5ct
+qtermwidget5-data
+qttranslations5-l10n
+qtwayland5
+qtchooser
 timeshift
 trash-cli
 tree

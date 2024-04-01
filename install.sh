@@ -53,6 +53,13 @@ displayConfig() {
 
 	# Copy Login greeter config file
 	sudo cp -b --suffix=.bak "assets/lightdm-gtk-greeter.conf" "/etc/lightdm/"
+	
+	# XFCE Settings configuration
+	sudo cp -b --suffix=.bak "assets/xfce-settings-manager.menu" "/etc/xdg/menus/"
+
+	sudo cp -b --suffix=.bak "assets/qterminal.ini" "/home/$USER/.config/qterminal.org/"
+
+	sudo cp -b --suffix=.bak "assets/Debian-Dark.colorscheme" "/usr/share/qtermwidget5/color-schemes/"
 }
 
 allConfigSudo() {
@@ -66,9 +73,13 @@ allConfigSudo() {
 	sudo xfconf-query -c thunar -p /last-location-bar -s "ThunarLocationButtons"
 
 	# Set theme and icons
-	sudo xfconf-query -c xsettings -p /Net/ThemeName "Flat-Remix-Blue-Dark"
+	sudo xfconf-query -c xsettings -p /Net/ThemeName "Flat-Remix-Green-Dark"
 	sudo xfconf-query -c xsettings -p /Net/IconThemeName "Flat-Remix-Green-Dark"
 	sudo xfconf-query -c xsettings -p /Xfce/SyncThemes -s true
+
+	# Set default terminal
+	sudo sed -i "/^TerminalEmulator=/ s/.*/TerminalEmulator=qterminal/" "/etc/xdg/xfce4/helpers.rc"
+	sudo update-alternatives --set x-terminal-emulator /usr/bin/qterminal
 }
 
 
