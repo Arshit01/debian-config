@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Root Terminal Emulator
+Comment=Opens a terminal as the root user, using sudo to ask for the password
+Exec=pkexec x-terminal-emulator
+Icon=utilities-terminal_su
+Path=
+Terminal=false
+StartupNotify=false

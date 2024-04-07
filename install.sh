@@ -9,6 +9,22 @@ checkRoot() {
 	fi
 }
 
+checkDirSudo() {
+	sudo mkdir -p "/etc/lightdm/"
+	sudo mkdir -p "/etc/X11/xord.conf.d/"
+	sudo mkdir -p "/etc/xdg/menus/"
+	sudo mkdir -p "/usr/share/gtksourceview-4/styles/"
+	sudo mkdir -p "/usr/share/plymouth/themes/"
+	sudo mkdir -p "/usr/share/qtermwidget5/color-schemes/"
+}
+
+checkDirNormal() {
+	mkdir -p "/home/$USER/.config/qterminal.org/"
+	mkdir -p "/home/$USER/.config/qt5ct/colors/"
+	mkdir -p "/home/$USER/.config/qt5ct/qss/"
+	mkdir -p "/home/$USER/.config/xfce4/xfconf/xfce-perchannel-xml/"
+}
+
 # update the machine
 upgradeSys() {
 	sudo apt-get update && apt-get full-upgrade -y
@@ -47,27 +63,47 @@ displayConfig() {
 		echo "GRUB configuration file not found."
 		exit 1
 	fi
+}
+
+copyFilesSudo() {
+	# Copy Login greeter config file
+	sudo cp -b --suffix=.bak "assets/sda/etc/lightdm/lightdm-gtk-greeter.conf" "/etc/lightdm/"
 
 	# Copy display resolution config file 
-	sudo cp -b --suffix=.bak "assets/10-monitor_120hz_refresh.conf" "/etc/X11/xorg.conf.d/"
-
-	# Copy Login greeter config file
-	sudo cp -b --suffix=.bak "assets/lightdm-gtk-greeter.conf" "/etc/lightdm/"
+	sudo cp -b --suffix=.bak "assets/sda/etc/X11/xorg.conf.d/10-monitor_120hz_refresh.conf" "/etc/X11/xorg.conf.d/"
 	
-	# XFCE Settings configuration
-	sudo cp -b --suffix=.bak "assets/xfce-settings-manager.menu" "/etc/xdg/menus/"
+	# XFCE Settings menu configuration
+	sudo cp -b --suffix=.bak "assets/sda/etc/xdg/menus/xfce-settings-manager.menu" "/etc/xdg/menus/"
+	
+	# Mousepad theme or styling
+	sudo cp -b --suffix=.bak "assets/sda/usr/share/gtksourceview-4/styles/Debian-Dark.xml" "/usr/share/gtksourceview-4/styles/"
 
-	sudo cp -b --suffix=.bak "assets/qterminal.ini" "/home/$USER/.config/qterminal.org/"
+	#QUERIES: Don't know about this file
+	sudo cp -b --suffix=.bak "assets/sda/usr/share/qtermwidget5/color-schemes/Debian-Dark.colorscheme" "/usr/share/qtermwidget5/color-schemes/"
 
-	sudo cp -b --suffix=.bak "assets/Debian-Dark.colorscheme" "/usr/share/qtermwidget5/color-schemes/"
+	#TODO: add Plymouth themes
+}
+
+copyFilesNormal() {
+	# Copy Qt color configuration file
+	cp -b --suffix=.bak "assets/sda/home/USER/.config/qt5ct/colors/Debian-Dark.conf" "/home/$USER/.config/qt5ct/colors/"
+
+	# Copy Qt scrollbar file
+	cp -b --suffix=.bak "assets/sda/home/USER/.config/qt5ct/qss/fusion-simple-scrollbar.qss" "/home/$USER/.config/qt5ct/qss/"
+
+	# Copy Qterminal configuration file
+	cp -b --suffix=.bak "assets/sda/home/USER/.config/qterminal.org/qterminal.ini" "/home/$USER/.config/qterminal.org/"
+
+	# Copy to fix tooltip configuration
+	cp -b --suffix=.bak "assets/sda/home/USER/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml" "/home/$USER/.config/xfce4/xfconf/xfce-perchannel-xml/"
 }
 
 allConfigSudo() {
 	# Exaract themes in themes folder
-	sudo tar --lzma -xf "assets/themes/Flat-Remix-Dark-themes.tar" "/usr/share/themes/"
+	sudo tar --lzma -xf "assets/sda/usr/share/themes/Flat-Remix-Dark-themes.tar" "/usr/share/themes/"
 
 	# Exaract icons in icons folder
-	sudo tar --lzma -xf "assets/icons/Flat-Remix-Dark-icons.tar" "/usr/share/icons/"
+	sudo tar --lzma -xf "assets/sda/usr/share/icons/Flat-Remix-Dark-icons.tar" "/usr/share/icons/"
 
 	# Make location bar appear in button form in thunar
 	sudo xfconf-query -c thunar -p /last-location-bar -s "ThunarLocationButtons"
@@ -81,7 +117,6 @@ allConfigSudo() {
 	sudo sed -i "/^TerminalEmulator=/ s/.*/TerminalEmulator=qterminal/" "/etc/xdg/xfce4/helpers.rc"
 	sudo update-alternatives --set x-terminal-emulator /usr/bin/qterminal
 }
-
 
 allConfigNormal() {
 	# Remove Shade icon option and scroll to rollup
@@ -102,10 +137,18 @@ allConfigNormal() {
 }
 
 if checkRoot; then
+	checkDirSudo
 	upgradeSys
 	installReq
     displayConfig
     allConfigSudo
 fi
 
+checkDirNormal
 allConfigNormal
+
+
+# echo 'deb http://download.opensuse.org/repositories/home:/cboxdoerfer/Debian_12/ /' | sudo tee /etc/apt/sources.list.d/home:cboxdoerfer.list
+# curl -fsSL https://download.opensuse.org/repositories/home:cboxdoerfer/Debian_12/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_cboxdoerfer.gpg > /dev/null
+# sudo apt update
+# sudo apt install fsearch
