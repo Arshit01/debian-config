@@ -1,3 +1,4 @@
 brave-browser
 fsearch (download from web)
 protonvpn
+vscode
