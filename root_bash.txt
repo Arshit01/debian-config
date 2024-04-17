@@ -1,0 +1,157 @@
+clear
+apt install base-files
+apt install build-essential
+clear
+cat install.txt | apt-get install -y
+cat install.txt | xargs apt-get install -y
+clear
+xargs apt-get install -y < install.txt 
+clear
+cat install.txt | xargs apt-get install -y
+xargs apt-get install -y < install.txt 
+apt-get install -y < install.txt 
+clear
+reboot
+clear
+apt list --installed | grep "terminal"
+apt list --installed | grep "qterm"
+update-alternatives --config xfce4-terminal
+update-alternatives --config x-terminal-emulator
+clear
+gtk-update-icon-cache /usr/share/icons/Flat-Remix-Blue-Dark/
+apt list --install | grep libre
+apt list --installed | grep libre
+clear
+apt remove --purge "libreoffice"
+apt remove --purge "libreoffice*"
+clear
+apt clean
+apt autoremove --purge
+clear
+clear
+cd
+claer
+clear
+apt list --installed | grep "ply"
+clear
+update-alternatives --config default.plymouth
+update-alternatives --config default.plymouth
+reboot
+clear
+apt list --installed | grep "menu"
+claer
+clear
+open .
+claer
+claer
+clear
+clear
+cd /home/bright_lion/Downloads/
+ls
+flatpack install io.github.cboxdoerfer.FSearch.flatpakref 
+clear
+rm io.github.cboxdoerfer.FSearch.flatpakref 
+clearrrrrrrrrrr
+clear
+clear
+ls
+dpkg -i fsearch_0.2.3-1+3.3_amd64.deb 
+apt install libicu67
+clear
+rm fsearch_0.2.3-1+3.3_amd64.deb 
+claerr
+clear
+dpkg -i fsearch_0.2.3-1+3.5_amd64.deb 
+clear
+open .
+clear
+clear
+7zip
+7z
+clear
+7z
+clear
+7z -tzip x -aoa -bd -spd -y -o/home/bright_lion/Downloads /home/bright_lion/Downloads/skeuos-gtk-master.zip
+chmod 777 skeuos-gtk-master
+chmod 777 -r skeuos-gtk-master
+chmod
+
+chmod -R 777 skeuos-gtk-master
+clear
+cp '/home/bright_lion/Downloads/skeuos-gtk-master/themes/Skeuos-Blue-Dark' '/usr/share/themes/' 
+cp -r '/home/bright_lion/Downloads/skeuos-gtk-master/themes/Skeuos-Blue-Dark' '/usr/share/themes/' 
+clear
+clear
+xrandr --newmode "1920x1080"  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync5~
+xrandr -r
+xrandr -i
+xrandr -u
+xrandr -q
+clear
+xrandr --help
+xrandr --newmod
+xrandr --newmode
+xrandr --newmode help
+xrandr help --newmode 
+clear
+xrandr --newmode "1920x1080"  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync
+xrandr --newmode "CustomMode1" 173.00 1920 2048 2248 2576 1080 1083 1088 1120 -hsync +vsync
+xrandr -q
+xrandr --addmode Virtual1 CustomMode1
+clearr
+clear
+xrandr --output Virtual1 --mode CustomMode1
+clear
+xrandr -q
+grub
+xrandr --helpp
+xrandr --help
+clear
+xrandr --output Virtual1 --mode 1920x1080
+xrandr --delmode Virtual1 CustomMode1
+xrandr --rmmode CustomMode1
+claer
+clear
+xrandr -q
+clearscclear
+clear
+xrandr -q
+clear
+nano t.sh
+chmod +x t.sh 
+./t.sh 
+clear
+nano t.sh 
+mousepad t.sh 
+clear
+./t.sh 
+clear
+xrandr -q
+exit
+history | grep install
+apt list --installed | grep "terminal"
+apt-get install -y < install.txt 
+cd ~/
+pwd
+cd /home/bright_lion/Desktop/
+apt-get install -y < install.txt 
+xargs apt-get install -y < install.txt 
+clear
+apt-get install -y < install.txt 
+xargs apt-get install -y < install.txt 
+clear
+sed 's/    theme:\s*\(.*\)/    theme: Aether #\1/g' -i /etc/lightdm/web-greeter.yml
+sed -i 's/^\(#?greeter\)-session\s*=\s*\(.*\)/greeter-session = web-greeter #\1/ #\2g' /etc/lightdm/lightdm.conf
+sudo systemctl restart lightdm.service
+clear
+chmod +x test.sh 
+clear
+./test.sh 
+mousepad test.sh 
+clear
+./test.sh 
+mousepad test.sh 
+clear
+./test.sh 
+./test.sh 
+clear

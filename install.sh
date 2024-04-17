@@ -9,15 +9,6 @@ checkRoot() {
 	fi
 }
 
-checkDirSudo() {
-	sudo mkdir -p "/etc/lightdm/"
-	sudo mkdir -p "/etc/X11/xord.conf.d/"
-	sudo mkdir -p "/etc/xdg/menus/"
-	sudo mkdir -p "/usr/share/gtksourceview-4/styles/"
-	sudo mkdir -p "/usr/share/plymouth/themes/"
-	sudo mkdir -p "/usr/share/qtermwidget5/color-schemes/"
-}
-
 checkDirNormal() {
 	mkdir -p "/home/$USER/.config/qterminal.org/"
 	mkdir -p "/home/$USER/.config/qt5ct/colors/"
@@ -66,10 +57,10 @@ displayConfig() {
 }
 
 copyFilesSudo() {
-	# Copy Login greeter config file
+	# Login greeter config file
 	sudo cp -b --suffix=.bak "assets/sda/etc/lightdm/lightdm-gtk-greeter.conf" "/etc/lightdm/"
 
-	# Copy display resolution config file 
+	# display resolution config file 
 	sudo cp -b --suffix=.bak "assets/sda/etc/X11/xorg.conf.d/10-monitor_120hz_refresh.conf" "/etc/X11/xorg.conf.d/"
 	
 	# XFCE Settings menu configuration
@@ -78,7 +69,7 @@ copyFilesSudo() {
 	# Mousepad theme or styling
 	sudo cp -b --suffix=.bak "assets/sda/usr/share/gtksourceview-4/styles/Debian-Dark.xml" "/usr/share/gtksourceview-4/styles/"
 
-	#QUERIES: Don't know about this file
+	# QTerminal color scheme
 	sudo cp -b --suffix=.bak "assets/sda/usr/share/qtermwidget5/color-schemes/Debian-Dark.colorscheme" "/usr/share/qtermwidget5/color-schemes/"
 
 	#TODO: add Plymouth themes

@@ -1,5 +1,5 @@
 favorites=xfce4-web-browser.desktop,xfce4-mail-reader.desktop,xfce4-file-manager.desktop,xfce4-terminal-emulator.desktop
-recent=io.github.cboxdoerfer.FSearch.desktop
+recent=io.github.cboxdoerfer.FSearch.desktop,xfce4-sensors.desktop,kdesystemsettings.desktop
 button-icon=/usr/share/icons/desktop-base/scalable/emblems/debian-logo.svg
 button-single-row=false
 show-button-title=false

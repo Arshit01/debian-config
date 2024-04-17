@@ -1,0 +1,10 @@
+[Scheme]
+Name=Debian-Dark
+FontName=FiraCode Nerd Font 12
+ColorCursorUseDefault=FALSE
+BackgroundMode=TERMINAL_BACKGROUND_TRANSPARENT
+BackgroundDarkness=0.95000
+ColorCursor=#B4E1FD
+ColorForeground=#81d4fa
+ColorBackground=#23252e
+ColorPalette=#1f2229;#d41919;#16f529;#ff8308;#1cad85;#0883ff;#8308ff;#b6b6b6;#9e9e9e;#ec0101;#fd349c;#ff8e1e;#06a284;#1e8eff;#8e1eff;#c2c2c2
