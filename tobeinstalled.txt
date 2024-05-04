@@ -1,14 +1,12 @@
 7zip
 automake
 binutils
-brave-browser
 build-essential
 cli-common
 command-not-found
 curl
 dbus-x11
 fakeroot
-fsearch
 ftp
 git
 gnome-disk-utility

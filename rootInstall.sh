@@ -20,9 +20,9 @@ checkDir() {
 
 copyFiles() {
 	# Exaract icons in icons folder
-	tar --lzma -xf "$DEB/assets/sda/usr/share/icons/Flat-Remix-Dark-icons.tar" "/usr/share/icons/"
+	tar --lzma -xf "$DEB/assets/sda/usr/share/icons/Flat-Remix-Dark-icons.tar" -C "/usr/share/icons/"
 	# Exaract themes in themes folder
-	tar --lzma -xf "$DEB/assets/sda/usr/share/themes/Flat-Remix-Dark-themes.tar" "/usr/share/themes/"
+	tar --lzma -xf "$DEB/assets/sda/usr/share/themes/Flat-Remix-Dark-themes.tar" -C "/usr/share/themes/"
 	# Login greeter config file
 	cp -bv --suffix=.bak "$DEB/assets/sda/etc/lightdm/lightdm-gtk-greeter.conf" "/etc/lightdm/"
 	# Display resolution config file 
@@ -48,7 +48,7 @@ copyFiles() {
 	# Whisker menu icon
 	cp -bv --suffix=.bak "$DEB/assets/sda/usr/share/icons/desktop-bvase/scalable/emblems/debian-logo.svg" "/usr/share/icons/desktop-bvase/scalable/emblems/"
 	# Plymouth themes
-	tar --gzip -xf "$DEB/assets/sda/usr/share/plymouth/themes/square_hud.tar.gz" "/usr/share/plymouth/themes/"
+	tar --gzip -xf "$DEB/assets/sda/usr/share/plymouth/themes/square_hud.tar.gz" -C "/usr/share/plymouth/themes/"
 	# Qt5CT configurations
 	cp -bvr --suffix=.bak "$DEB/assets/sda/usr/share/qt5ct/" "/usr/share/"
 	# QTerminal color scheme
@@ -68,7 +68,7 @@ allConfig() {
 	sed -i "/^#*DSHELL=/ s/.*/DSHELL=\"$DSHELL\"/" "$NEW_USER"
 	sed -i "/^#*SHELL=/ s/.*/SHELL=\"$SHELL\"/" "$NEW_USER2"
 
-	tar --lzma -xf "$DEB/assets/sda/opt/oh-my-zsh.tar" "/opt/"
+	tar --lzma -xf "$DEB/assets/sda/opt/oh-my-zsh.tar" -C "/opt/"
 
 	cp -bv "$DEB/assets/sda/home/USER/.p10k.zsh" "/etc/skel/"
 	cp -bv "$DEB/assets/sda/home/USER/.zshrc" "/etc/skel/"
