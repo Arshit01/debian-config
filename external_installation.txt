@@ -1,3 +1,0 @@
-brave-browser
-fsearch
-vscode

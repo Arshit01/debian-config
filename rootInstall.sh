@@ -58,6 +58,21 @@ copyFiles() {
 }
 
 allConfig() {
+	# Define zsh settings
+	DSHELL=/bin/zsh
+	SHELL=/bin/zsh
+
+	NEW_USER="/etc/adduser.conf"
+	NEW_USER2="/etc/default/useradd"
+
+	sed -i "/^#*DSHELL=/ s/.*/DSHELL=\"$DSHELL\"/" "$NEW_USER"
+	sed -i "/^#*SHELL=/ s/.*/SHELL=\"$SHELL\"/" "$NEW_USER2"
+
+	tar --lzma -xf "assets/sda/opt/oh-my-zsh.tar" "/opt/"
+
+	cp -bv "assets/sda/home/USER/.p10k.zsh" "/etc/skel/"
+	cp -bv "assets/sda/home/USER/.zshrc" "/etc/skel/"
+
 	# Update icon cache
 	for theme in /usr/share/icons/Fla*; do gtk-update-icon-cache $theme; done
 	# Change desktop-base theme

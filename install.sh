@@ -28,6 +28,7 @@ addSource() {
 
 # install required packages
 installReq() {
+	addSource
 	sudo apt-get update && xargs apt-get install -y < tobeinstalled.txt
 	sudo apt-get autopurge -y
 }
@@ -37,7 +38,7 @@ checkDir() {
 	mkdir -pv "/home/$USER/.config/qt5ct/{colors,qss}/"
 	mkdir -pv "/home/$USER/.config/qterminal.org/"
 	mkdir -pv "/home/$USER/.config/Thunar/"
-	mkdir -pv "/home/$USER/.config/xfce4/"
+	mkdir -pv "/home/$USER/.config/xfce4/{panel{launcher-5,launcher-7},xfconf/xfce-perchannel-xml}"
 }
 
 # Set custom resolution
@@ -68,7 +69,6 @@ copyFiles() {
 	cp -bvr --suffix=.bak "assets/sda/home/USER/.config/xfce4/" "/home/$USER/.config/"
 }
 
-
 if checkRoot; then
 	sudo cp "rootInstall.sh" "/root/"
 	sudo chmod +x "/root/rootInstall.sh"
@@ -79,3 +79,4 @@ fi
 
 checkDir
 copyFiles
+pkexec x-terminal-emulator -e "bash -c './rootInstall.sh; exec bash'"
