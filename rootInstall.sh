@@ -1,5 +1,7 @@
 #!/bin/bash
 
+DEB=/home/bright_lion/Downloads/debian-config
+
 checkDir() {
         mkdir -pv "/etc/lightdm/"
         mkdir -pv "/etc/X11/{xord.conf.d,Xsession.d}/"
@@ -18,41 +20,41 @@ checkDir() {
 
 copyFiles() {
 	# Exaract icons in icons folder
-	tar --lzma -xf "assets/sda/usr/share/icons/Flat-Remix-Dark-icons.tar" "/usr/share/icons/"
+	tar --lzma -xf "$DEB/assets/sda/usr/share/icons/Flat-Remix-Dark-icons.tar" "/usr/share/icons/"
 	# Exaract themes in themes folder
-	tar --lzma -xf "assets/sda/usr/share/themes/Flat-Remix-Dark-themes.tar" "/usr/share/themes/"
+	tar --lzma -xf "$DEB/assets/sda/usr/share/themes/Flat-Remix-Dark-themes.tar" "/usr/share/themes/"
 	# Login greeter config file
-	cp -bv --suffix=.bak "assets/sda/etc/lightdm/lightdm-gtk-greeter.conf" "/etc/lightdm/"
+	cp -bv --suffix=.bak "$DEB/assets/sda/etc/lightdm/lightdm-gtk-greeter.conf" "/etc/lightdm/"
 	# Display resolution config file 
-	cp -bv --suffix=.bak "assets/sda/etc/X11/xorg.conf.d/10-monitor_120hz_refresh.conf" "/etc/X11/xorg.conf.d/"
+	cp -bv --suffix=.bak "$DEB/assets/sda/etc/X11/xorg.conf.d/10-monitor_120hz_refresh.conf" "/etc/X11/xorg.conf.d/"
 	# Environment variable file 
-	cp -bv --suffix=.bak "assets/sda/etc/X11/Xsession.d/90debian-themes" "/etc/X11/Xsession.d/"
+	cp -bv --suffix=.bak "$DEB/assets/sda/etc/X11/Xsession.d/90debian-themes" "/etc/X11/Xsession.d/"
 	# XFCE Settings menu configuration
-	cp -bv --suffix=.bak "assets/sda/etc/xdg/menus/xfce-settings-manager.menu" "/etc/xdg/menus/"
+	cp -bv --suffix=.bak "$DEB/assets/sda/etc/xdg/menus/xfce-settings-manager.menu" "/etc/xdg/menus/"
 	# Qt5 configuration settings
-	cp -bv --suffix=.bak "assets/sda/etc/xdg/qt5ct/qt5ct.conf" "/etc/xdg/qt5ct/"
+	cp -bv --suffix=.bak "$DEB/assets/sda/etc/xdg/qt5ct/qt5ct.conf" "/etc/xdg/qt5ct/"
 	# Qterminal configuration file
-	cp -bv --suffix=.bak "assets/sda/etc/xdg/qterminal.org/qterminal.ini" "/etc/xdg/qterminal.org/"
+	cp -bv --suffix=.bak "$DEB/assets/sda/etc/xdg/qterminal.org/qterminal.ini" "/etc/xdg/qterminal.org/"
 	# XFCE configurations in XML format
-	cp -bvr --suffix=.bak "assets/sda/etc/xdg/xfce4/" "/etc/xdg/"
+	cp -bvr --suffix=.bak "$DEB/assets/sda/etc/xdg/xfce4/" "/etc/xdg/"
 	# Display VPN IP address in panel
-	cp -bv --suffix=.bak "assets/sda/usr/local/sbin/xfce4-panel-genmon-vpnip.sh" "/usr/local/sbin/"
+	cp -bv --suffix=.bak "$DEB/assets/sda/usr/local/sbin/xfce4-panel-genmon-vpnip.sh" "/usr/local/sbin/"
 	# Debian wallpaper
-	cp -bv --suffix=.bak "assets/sda/usr/share/backgrounds/Debian.jpg" "/usr/share/backgrounds/"
+	cp -bv --suffix=.bak "$DEB/assets/sda/usr/share/backgrounds/Debian.jpg" "/usr/share/backgrounds/"
 	# FiraCode Nerd fonts
-	cp -bvr --suffix=.bak "assets/sda/usr/share/fonts/truetype/FiraCode/" "/usr/share/fonts/truetype/"
+	cp -bvr --suffix=.bak "$DEB/assets/sda/usr/share/fonts/truetype/FiraCode/" "/usr/share/fonts/truetype/"
 	# Mousepad theme or styling
-	cp -bv --suffix=.bak "assets/sda/usr/share/gtksourceview-4/styles/Debian-Dark.xml" "/usr/share/gtksourceview-4/styles/"
+	cp -bv --suffix=.bak "$DEB/assets/sda/usr/share/gtksourceview-4/styles/Debian-Dark.xml" "/usr/share/gtksourceview-4/styles/"
 	# Whisker menu icon
-	cp -bv --suffix=.bak "assets/sda/usr/share/icons/desktop-bvase/scalable/emblems/debian-logo.svg" "/usr/share/icons/desktop-bvase/scalable/emblems/"
+	cp -bv --suffix=.bak "$DEB/assets/sda/usr/share/icons/desktop-bvase/scalable/emblems/debian-logo.svg" "/usr/share/icons/desktop-bvase/scalable/emblems/"
 	# Plymouth themes
-	tar --gzip -xf "assets/sda/usr/share/plymouth/themes/square_hud.tar.gz" "/usr/share/plymouth/themes/"
+	tar --gzip -xf "$DEB/assets/sda/usr/share/plymouth/themes/square_hud.tar.gz" "/usr/share/plymouth/themes/"
 	# Qt5CT configurations
-	cp -bvr --suffix=.bak "assets/sda/usr/share/qt5ct/" "/usr/share/"
+	cp -bvr --suffix=.bak "$DEB/assets/sda/usr/share/qt5ct/" "/usr/share/"
 	# QTerminal color scheme
-	cp -bv --suffix=.bak "assets/sda/usr/share/qtermwidget5/color-schemes/Debian-Dark.colorscheme" "/usr/share/qtermwidget5/color-schemes/"
+	cp -bv --suffix=.bak "$DEB/assets/sda/usr/share/qtermwidget5/color-schemes/Debian-Dark.colorscheme" "/usr/share/qtermwidget5/color-schemes/"
 	# XFCE4 Terminal color scheme
-	cp -bv --suffix=.bak "assets/sda/usr/share/xfce4/terminal/colorschemes/Debian-Dark.theme" "/usr/share/xfce4/terminal/colorschemes/"
+	cp -bv --suffix=.bak "$DEB/assets/sda/usr/share/xfce4/terminal/colorschemes/Debian-Dark.theme" "/usr/share/xfce4/terminal/colorschemes/"
 }
 
 allConfig() {
@@ -66,10 +68,10 @@ allConfig() {
 	sed -i "/^#*DSHELL=/ s/.*/DSHELL=\"$DSHELL\"/" "$NEW_USER"
 	sed -i "/^#*SHELL=/ s/.*/SHELL=\"$SHELL\"/" "$NEW_USER2"
 
-	tar --lzma -xf "assets/sda/opt/oh-my-zsh.tar" "/opt/"
+	tar --lzma -xf "$DEB/assets/sda/opt/oh-my-zsh.tar" "/opt/"
 
-	cp -bv "assets/sda/home/USER/.p10k.zsh" "/etc/skel/"
-	cp -bv "assets/sda/home/USER/.zshrc" "/etc/skel/"
+	cp -bv "$DEB/assets/sda/home/USER/.p10k.zsh" "/etc/skel/"
+	cp -bv "$DEB/assets/sda/home/USER/.zshrc" "/etc/skel/"
 
 	# Update icon cache
 	for theme in /usr/share/icons/Fla*; do gtk-update-icon-cache $theme; done
