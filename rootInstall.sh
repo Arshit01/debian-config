@@ -47,8 +47,6 @@ copyFiles() {
 	cp -bv --suffix=.bak "assets/sda/usr/share/icons/desktop-bvase/scalable/emblems/debian-logo.svg" "/usr/share/icons/desktop-bvase/scalable/emblems/"
 	# Plymouth themes
 	tar --gzip -xf "assets/sda/usr/share/plymouth/themes/square_hud.tar.gz" "/usr/share/plymouth/themes/"
-	# Policies for Debian
-	cp -bv --suffix=.bak "assets/sda/usr/share/polkit-1/actions/org.debian.pkexec.policy" "/usr/share/polkit-1/actions/"
 	# Qt5CT configurations
 	cp -bvr --suffix=.bak "assets/sda/usr/share/qt5ct/" "/usr/share/"
 	# QTerminal color scheme

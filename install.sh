@@ -75,6 +75,8 @@ if checkRoot; then
 	upgradeSys
 	installReq
 	displayConfig
+	# Policies for Debian
+	sudo cp -bv --suffix=.bak "assets/sda/usr/share/polkit-1/actions/org.debian.pkexec.policy" "/usr/share/polkit-1/actions/"
 fi
 
 checkDir
